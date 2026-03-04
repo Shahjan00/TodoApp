@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="signup-login" >
+        <div class="signup-box">
+            <h1>Todo</h1>
+            {% if user.is_authenticated %}
+            <div class="welcome-row">
+                <div class="welcome-text">Welcome, {{ user.username }}</div>
+                <a href="/logout" class="logout-button"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" class="inp" placeholder="Add Today's Task" name="title">
+                <br>
+                <br>
+                <input type="submit" class="submit-button" value="Add Task">
+                <br>
+                <br>
+            </form>
+
+            {% for task in tasks %}
+                <div class="todo">
+                    <h5>{{ forloop.counter }}</h5>
+                    <p>{{ task.title }}</p>
+                    <div>
+                        <a href="/edit_todo/{{task.id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="/del_todo/{{task.id}}"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

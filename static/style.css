@@ -1,0 +1,197 @@
+/* Signup page styles */
+:root{
+  --bg:#f6f8fa;
+  --card:#ffffff;
+  --accent:#4f46e5; /* indigo-600 */
+  --accent-strong:#3730a3; /* indigo-700 */
+  --muted:#6b7280; /* gray-500 */
+  --danger:#dc2626;
+  --radius:10px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:linear-gradient(180deg, var(--bg) 0%, #eef2ff 100%);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Centering container */
+.signup-login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+}
+
+.signup-box{
+  width:100%;
+  max-width:420px;
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:0 10px 30px rgba(15,23,42,0.08);
+  padding:28px 28px;
+  border:1px solid rgba(15,23,42,0.04);
+}
+
+.signup-box h1{
+  margin:0 0 18px 0;
+  font-size:22px;
+  letter-spacing:0.2px;
+}
+
+/* Welcome row (username + logout) */
+.welcome-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+.welcome-text{
+  font-size:15px;
+  color:#0f172a;
+  font-weight:600;
+}
+.logout-button{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  color:var(--accent-strong);
+  border:1px solid rgba(79,70,229,0.12);
+  background:transparent;
+  font-weight:600;
+}
+.logout-button:hover{background:rgba(79,70,229,0.04)}
+
+.field{
+  margin-bottom:14px;
+}
+
+.field b{display:block;margin-bottom:6px;color:var(--muted);font-weight:600}
+
+.inp{
+  width:100%;
+  padding:12px 14px;
+  border-radius:8px;
+  border:1px solid rgba(15,23,42,0.08);
+  font-size:15px;
+  outline:none;
+  background:linear-gradient(180deg, #fff, #fbfdff);
+  transition:box-shadow .14s ease, border-color .14s ease;
+}
+.inp::placeholder{color:#9ca3af}
+.inp:focus{
+  border-color:var(--accent);
+  box-shadow:0 6px 18px rgba(79,70,229,0.12);
+}
+
+.submit-button{
+  display:inline-block;
+  width:100%;
+  padding:12px 14px;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  font-weight:600;
+  border-radius:8px;
+  cursor:pointer;
+  transition:transform .06s ease, box-shadow .06s ease, background-color .12s ease;
+}
+.submit-button:hover{background:var(--accent-strong);transform:translateY(-1px)}
+.submit-button:active{transform:translateY(0)}
+
+.signup-box a{
+  color:var(--accent-strong);
+  text-decoration:none;
+}
+
+/* small helper for errors (if Django adds error classes) */
+.error, .field .errorlist{
+  color:var(--danger);
+  font-size:13px;
+  margin-top:6px;
+}
+
+/* Responsive tweaks */
+@media (max-width:440px){
+  .signup-box{padding:20px;border-radius:8px}
+  .signup-box h1{font-size:20px}
+}
+
+/* utility center for the form's optional link */
+.signup-box .field b + a{display:inline-block;margin-top:8px}
+
+/* small focus-visible improvements for accessibility */
+button:focus, input:focus{outline:3px solid rgba(79,70,229,0.12);outline-offset:2px}
+
+/* End of signup styles */
+
+/* Todo list item styles: make tasks appear in a horizontal row */
+.todo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 12px;
+  border-radius:8px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,255,0.9));
+  border:1px solid rgba(15,23,42,0.04);
+  margin-bottom:10px;
+}
+
+.todo h5{
+  margin:0;
+  min-width:28px;
+  height:28px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(79,70,229,0.09);
+  color:var(--accent-strong);
+  font-size:13px;
+  font-weight:700;
+  border-radius:6px;
+  padding:0 6px;
+}
+
+.todo p{
+  margin:0 12px;
+  flex:1 1 auto;
+  font-size:15px;
+  color:#0f172a;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.todo > div{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.todo a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:6px;
+  border-radius:6px;
+}
+.todo a:hover{color:var(--accent-strong);background:rgba(79,70,229,0.04)}
+
+/* responsive: stack number/title/actions on small screens */
+@media (max-width:520px){
+  .signup-box{max-width:92vw;padding:18px}
+  .todo{flex-wrap:wrap;align-items:flex-start}
+  .todo p{white-space:normal}
+  .todo > div{margin-left:auto}
+}
+

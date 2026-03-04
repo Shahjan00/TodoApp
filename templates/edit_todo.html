@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="signup-login" >
+        <div class="signup-box">
+            <form method="post">
+                {% csrf_token %}
+                <h1>Todo</h1>
+                    <input type="text" class="inp" placeholder="Add Today's Task" name="title" value="{{obj.title}}">
+                    <br>
+                    <br>
+                    <input type="submit" class="submit-button" value="Update Task">
+                    <br>
+                    <br>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
